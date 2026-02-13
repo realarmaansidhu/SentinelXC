@@ -6,6 +6,7 @@ Sentinel is a Streamlit-based web application that leverages Google's Gemini Pro
 
 - **Password Architect**: Generates memorable XKCD-style passwords based on a user-provided theme (e.g., "Cyberpunk City").
 - **Red Team Audit**: Analyzes password strength using `zxcvbn` (mathematical estimation of entropy) and provides a unique "roast" from an AI hacker persona explaining *how* it would be cracked.
+- **Resilient AI Logic**: Implements a "Model Ladder" (Gemini -> Groq -> Mistral) to ensure the application remains functional even if the primary AI provider is rate-limited.
 
 ## prerequisites
 
