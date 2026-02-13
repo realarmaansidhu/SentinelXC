@@ -6,6 +6,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+import logging
+
+# Configure logging
+logging.basicConfig(filename='sentinel.log', level=logging.INFO, 
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
 class ModelLadder:
     def __init__(self):
         self.models = []
@@ -45,6 +51,10 @@ class ModelLadder:
                     temperature=0.7
                 )
             })
+            
+        if not self.models:
+            logging.error("No models loaded. Please checks your .env file for API keys.")
+            raise ValueError("No AI models available. Please check your .env file.")
 
     def invoke(self, prompt: str):
         """
@@ -56,13 +66,15 @@ class ModelLadder:
             llm = model_entry["llm"]
             
             try:
-                # print(f"Attempting to use {name}...") # Debug logging
+                logging.info(f"Attempting invoke with {name}")
                 response = llm.invoke(prompt)
                 return response
             except Exception as e:
                 error_msg = f"{name} failed: {str(e)}"
+                logging.warning(error_msg)
                 errors.append(error_msg)
                 # Continue to next model
                 
         # If we reach here, all models failed
+        logging.critical("All models in the ladder failed.")
         raise Exception(f"All models failed. Errors: {'; '.join(errors)}")

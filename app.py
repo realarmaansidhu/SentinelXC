@@ -47,7 +47,7 @@ with tab1:
     st.header("Password Generator")
     st.markdown("Create a high-entropy, memorable password based on a vibe.")
     
-    theme = st.text_input("Enter a Theme (e.g., 'Cyberpunk City', 'Tropical Beach')", value="Space Exploration")
+    theme = st.text_input("Enter a Theme (e.g., 'Cyberpunk City', 'Tropical Beach')", value="Space Exploration", max_chars=64)
     
     if st.button("Generate Password", type="primary"):
         with st.spinner("Consulting the architect..."):
@@ -64,7 +64,7 @@ with tab2:
     st.header("Red Team Audit")
     st.markdown("Analyze your password's strength and get roasted by an AI hacker.")
     
-    password_input = st.text_input("Enter Password to Audit", type="password")
+    password_input = st.text_input("Enter Password to Audit", type="password", max_chars=128)
     
     if st.button("Audit Password", type="primary"):
         if not password_input:

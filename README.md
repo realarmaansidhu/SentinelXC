@@ -36,6 +36,25 @@ graph TD
     E -->|Fail| F[Error Handling]
 ```
 
+### 4. 🛡️ Enterprise-Grade Security
+- **Prompt Injection Defense**: Inputs are sandboxed in triple quotes and truncated to prevent LLM hijacking.
+- **DoS Protection**: Strict input length limits prevent context window exhaustion attacks.
+- **Fail-Safe Logging**: Comprehensive error tracking for the Model Ladder.
+
+---
+
+## 🔮 Future Roadmap
+
+We are building the ultimate AI Security Suite. Coming soon:
+
+### 📂 Phase 2: Batch Operations
+- **Bulk Auditor**: Upload `.csv` or `.txt` files to audit thousands of passwords at once.
+- **Factory Mode**: Generate batch passwords (e.g., 500x) for enterprise provisioning.
+
+### 🔌 Phase 3: Integration
+- **API Endpoint**: REST API to integrate Sentinel's logic into your own apps.
+- **Browser Extension**: Real-time password strength analysis in your browser.
+
 ---
 
 ## 🛠️ Tech Stack
