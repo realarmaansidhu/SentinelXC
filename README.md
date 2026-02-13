@@ -1,66 +1,89 @@
-# Sentinel - The AI Password Architect & Auditor 🛡️
+# 🛡️ Sentinel AI - Password Architect & Auditor
 
-Sentinel is a Streamlit-based web application that leverages Google's Gemini Pro model to generate high-entropy, memorable passwords and audit existing passwords with a "Red Team Hacker" persona.
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.32.0-FF4B4B)
+![LangChain](https://img.shields.io/badge/LangChain-Integration-green)
 
-## features
+**Sentinel AI** is a next-generation cybersecurity tool that combines **generative AI** with traditional security algorithms. It serves two main purposes:
+1.  **Architect**: Generating high-entropy, memorable passwords based on user themes (XKCD-style).
+2.  **Auditor**: analyzing password strength using mathematical models and an AI "Red Team" persona that roasts your security choices.
 
-- **Password Architect**: Generates memorable XKCD-style passwords based on a user-provided theme (e.g., "Cyberpunk City").
-- **Red Team Audit**: Analyzes password strength using `zxcvbn` (mathematical estimation of entropy) and provides a unique "roast" from an AI hacker persona explaining *how* it would be cracked.
-- **Resilient AI Logic**: Implements a "Model Ladder" (Gemini -> Groq -> Mistral) to ensure the application remains functional even if the primary AI provider is rate-limited.
+---
 
-## prerequisites
+## 🚀 Features
 
-- Python 3.10+
-- A Google Cloud API Key with access to Gemini API.
+### 1. 🏗️ The Architect
+Forget "Tr0ub4dor&3". Tell Sentinel a theme like *"Cyberpunk City"* or *"Tropical Beach"*, and it will generate a cryptographically strong yet memorable password such as:
+> `Neon#Keyboard#Motorcycle#Helmet44`
 
-## setup
+### 2. 💀 Red Team Audit
+We combine **zxcvbn** (Dropbox's entropy estimator) with a **Large Language Model (LLM)** configured as a ruthless brilliant hacker.
+- **Quantitative**: Score (0-4), Crack Time, and offline hashing analysis.
+- **Qualitative**: A biting, sarcastic roast of your password's weaknesses.
 
-1.  **Clone the repository:**
+### 3. 🧗 The Model Ladder
+Sentinel is built for resilience. It features a fail-safe **Model Ladder** that automatically switches providers if one is rate-limited or down.
+
+```mermaid
+graph TD
+    A[User Request] --> B{Gemini 2.0 Flash?}
+    B -->|Success| C[Result]
+    B -->|Fail/429| D{Llama 3 @ Groq?}
+    D -->|Success| C
+    D -->|Fail| E{Mistral Tiny?}
+    E -->|Success| C
+    E -->|Fail| F[Error Handling]
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: [Streamlit](https://streamlit.io/) with custom CSS for a "Cyber Security" aesthetic.
+- **Orchestration**: [LangChain](https://www.langchain.com/).
+- **AI Models**:
+    - **Primary**: Google Gemini 2.0 Flash (`langchain-google-genai`)
+    - **Secondary**: Llama 3 on Groq (`langchain-groq`)
+    - **Tertiary**: Mistral AI (`langchain-mistralai`)
+- **Security Logic**: `zxcvbn` (Python port).
+
+---
+
+## 📦 Installation
+
+1.  **Clone the repository**:
     ```bash
-    git clone <repository_url>
-    cd Sentinel_AI_Password
+    git clone https://github.com/realarmaansidhu/SentinelAI.git
+    cd SentinelAI
     ```
 
-2.  **Create and activate a virtual environment:**
-    ```bash
-    python3 -m venv environ
-    source environ/bin/activate  # On Windows: environ\Scripts\activate
-    ```
-
-3.  **Install dependencies:**
+2.  **Install Dependencies**:
     ```bash
     pip install -r requirements.txt
     ```
 
-4.  **Configure Environment Variables:**
-    - Rename `.env.example` to `.env`:
-        ```bash
-        cp .env.example .env
-        ```
-    - Open `.env` and add your Google API Key:
-        ```
-        GOOGLE_API_KEY=your_api_key_here
-        ```
+3.  **Configure Environment**:
+    Create a `.env` file (copy from `.env.example`) and add your API keys:
+    ```ini
+    GOOGLE_API_KEY=your_gemini_key
+    GROQ_API_KEY=your_groq_key
+    MISTRAL_API_KEY=your_mistral_key
+    ```
 
-## usage
+4.  **Run the App**:
+    ```bash
+    streamlit run app.py
+    ```
 
-Run the Streamlit application:
+---
 
-```bash
-streamlit run app.py
-```
+## 📸 Screenshots
 
-Opens in your browser at `http://localhost:8501`.
+| Architect Mode | Red Team Mode |
+|:---:|:---:|
+| Generate themed passwords | Get roasted by AI |
 
-## project structure
+---
 
-```
-Sentinel_AI_Password/
-├── app.py                 # Main UI entry point
-├── .env                   # Local secrets (ignored by git)
-├── logic/
-│   ├── generator.py       # Theme-to-Password Logic
-│   └── auditor.py         # zxcvbn + Hacker Persona Logic
-└── ui/
-    └── styles.py          # Custom CSS/Styling
-```
+Made with ❤️ and ☕ by [Armaan Sidhu](https://github.com/realarmaansidhu)

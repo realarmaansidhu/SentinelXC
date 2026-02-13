@@ -75,34 +75,55 @@ with tab2:
                     # Initialize Auditor
                     audit_tool = auditor.PasswordAuditor(llm)
                     
-                    # Math Check
-                    math_result = audit_tool.check_math(password_input)
-                    score = math_result.get('score', 0)
-                    crack_times = math_result.get('crack_times_display', {})
-                    feedback = math_result.get('feedback', {})
-
-                    # Roast
+                    # 1. zxcvbn check
+                    stats = audit_tool.check_math(password_input)
+                    score = stats['score']  # 0 to 4
+                    crack_time = stats['crack_times_display']['offline_slow_hashing_1e4_per_second']
+                    feedback = stats['feedback'].get('warning')
+                    suggestions = stats['feedback'].get('suggestions')
+                    
+                    # 2. LLM Roast
                     roast = audit_tool.roast_password(password_input)
                     
-                    # Display Results
-                    st.markdown("### 📊 Security Score")
+                    # --- DASHBOARD ---
+                    st.markdown("### 📊 Security Analysis Dashboard")
                     
-                    # Progress bar
-                    progress_val = score / 4.0
-                    st.progress(progress_val)
-                    st.write(f"**Score: {score}/4**")
+                    # Score Progress Bar
+                    st.write(" **Security Score**")
+                    score_labels = ["💀 Critical", "⚠️ Weak", "🤔 Moderate", "🛡️ Strong", "🔥 Unbreakable"]
+                    st.progress(score / 4, text=f"{score}/4 - {score_labels[score]}")
                     
-                    st.write(f"**Time to Crack (Offline Fast Hashing):** {crack_times.get('offline_fast_hashing_1e10_per_second', 'N/A')}")
+                    col1, col2 = st.columns(2)
                     
-                    if feedback.get('warning'):
-                        st.warning(f"⚠️ {feedback['warning']}")
-                    if feedback.get('suggestions'):
-                        for suggestion in feedback['suggestions']:
-                            st.info(f"💡 {suggestion}")
+                    with col1:
+                        st.metric(label="Estimated Crack Time", value=crack_time)
+                    
+                    with col2:
+                        if score < 3:
+                            st.error("Verdict: VULNERABLE")
+                        else:
+                            st.success("Verdict: SECURE")
+
+                    if feedback:
+                        st.warning(f"**Warning:** {feedback}")
+                    
+                    if suggestions:
+                        st.info(f"**Tip:** {suggestions[0]}")
+                    
+                    # Composition Chart
+                    st.write("### 🧬 Password Composition")
+                    composition = {
+                        "Lowercase": sum(1 for c in password_input if c.islower()),
+                        "Uppercase": sum(1 for c in password_input if c.isupper()),
+                        "Numbers": sum(1 for c in password_input if c.isdigit()),
+                        "Symbols": sum(1 for c in password_input if not c.isalnum())
+                    }
+                    st.bar_chart(composition)
 
                     st.markdown("---")
-                    st.markdown("### 😈 Red Team Roast")
-                    st.write(roast)
+                    st.markdown("### 👺 Red Team Roast")
+                    st.caption("AI Hacker Persona")
+                    st.markdown(f"> *{roast}*")
                     
                 except Exception as e:
                     st.error(f"Error during audit: {str(e)}")
