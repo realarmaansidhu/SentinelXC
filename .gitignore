@@ -1,2 +1,37 @@
-/.DS_Store
-/.agent
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+environ/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypotheses
+.ruff_cache
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# MacOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
