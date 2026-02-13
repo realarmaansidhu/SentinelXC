@@ -42,10 +42,26 @@ def apply_custom_styles():
             border: 1px solid #4F4F4F;
             border-radius: 5px;
         }
-        
+
+        /* Labels */
+        .stTextInput>label, .stSelectbox>label {
+            color: #00FF94 !important;
+            font-weight: bold;
+        }
+
+        /* Markdown Text */
+        .stMarkdown p {
+            color: #FAFAFA;
+        }
+
         /* Progress bar */
         .stProgress > div > div > div > div {
             background-color: #00FF94;
+        }
+        
+        /* Metric Labels */
+        [data-testid="stMetricLabel"] {
+            color: #00FF94 !important;
         }
         
         /* Tab styling */

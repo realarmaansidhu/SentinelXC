@@ -9,7 +9,7 @@ load_dotenv()
 import logging
 
 # Configure logging
-logging.basicConfig(filename='sentinel.log', level=logging.INFO, 
+logging.basicConfig(filename='sentinelxc.log', level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 class ModelLadder:

@@ -9,8 +9,9 @@ from ui import styles
 load_dotenv()
 
 # Page config
+# Page config
 st.set_page_config(
-    page_title="Sentinel - Password Architect & Auditor",
+    page_title="SentinelXC - The Encrypted Architect",
     page_icon="🛡️",
     layout="centered"
 )
@@ -29,7 +30,7 @@ def get_llm():
     """
     return ModelLadder()
 
-st.title("🛡️ Sentinel AI")
+st.title("🛡️ SentinelXC")
 st.subheader("The AI Password Architect & Auditor")
 
 # Initialize LLM

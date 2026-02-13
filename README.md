@@ -1,11 +1,10 @@
-# 🛡️ Sentinel AI - Password Architect & Auditor
+# 🛡️ SentinelXC - Password Architect & Auditor
 
-![Status](https://img.shields.io/badge/Status-Active-success)
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.32.0-FF4B4B)
-![LangChain](https://img.shields.io/badge/LangChain-Integration-green)
+![SentinelXC Login](https://img.shields.io/badge/Status-Stable-brightgreen) ![Python 3.12](https://img.shields.io/badge/Python-3.12-blue) ![UI-Streamlit](https://img.shields.io/badge/UI-Streamlit-red)
 
-**Sentinel AI** is a next-generation cybersecurity tool that combines **generative AI** with traditional security algorithms. It serves two main purposes:
+> **"The only secure password is the one you can't remember. But SentinelXC makes it memorable."**
+
+**SentinelXC** is a next-generation cybersecurity tool that combines **generative AI** with traditional security algorithms. It serves two main purposes:
 1.  **Architect**: Generating high-entropy, memorable passwords based on user themes (XKCD-style).
 2.  **Auditor**: analyzing password strength using mathematical models and an AI "Red Team" persona that roasts your security choices.
 
@@ -23,15 +22,15 @@ We combine **zxcvbn** (Dropbox's entropy estimator) with a **Large Language Mode
 - **Qualitative**: A biting, sarcastic roast of your password's weaknesses.
 
 ### 3. 🧗 The Model Ladder
-Sentinel is built for resilience. It features a fail-safe **Model Ladder** that automatically switches providers if one is rate-limited or down.
+**SentinelXC** is built for resilience. It features a fail-safe **Model Ladder** that automatically switches providers if one is rate-limited or down.
 
 ```mermaid
 graph TD
-    A[User Request] --> B{Gemini 2.0 Flash?}
-    B -->|Success| C[Result]
-    B -->|Fail/429| D{Llama 3 @ Groq?}
+    A[Request Password/Audit] --> B{Gemini 2.0 Flash}
+    B -->|Success| C[Return Result]
+    B -->|Fail| D{Llama 3 (Groq)}
     D -->|Success| C
-    D -->|Fail| E{Mistral Tiny?}
+    D -->|Fail| E{Mistral Tiny}
     E -->|Success| C
     E -->|Fail| F[Error Handling]
 ```
@@ -52,7 +51,7 @@ We are building the ultimate AI Security Suite. Coming soon:
 - **Factory Mode**: Generate batch passwords (e.g., 500x) for enterprise provisioning.
 
 ### 🔌 Phase 3: Integration
-- **API Endpoint**: REST API to integrate Sentinel's logic into your own apps.
+- **API Endpoint**: REST API to integrate SentinelXC's logic into your own apps.
 - **Browser Extension**: Real-time password strength analysis in your browser.
 
 ---
@@ -71,16 +70,11 @@ We are building the ultimate AI Security Suite. Coming soon:
 
 ## 📦 Installation
 
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/realarmaansidhu/SentinelAI.git
-    cd SentinelAI
-    ```
-
-2.  **Install Dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+## How to Run
+1.  **Clone**: `git clone https://github.com/realarmaansidhu/SentinelAI.git`
+2.  **Navigate**: `cd SentinelAI`
+3.  **Install**: `pip install -r requirements.txt`
+4.  **Run**: `streamlit run app.py`
 
 3.  **Configure Environment**:
     Create a `.env` file (copy from `.env.example`) and add your API keys:
