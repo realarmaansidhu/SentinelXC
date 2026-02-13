@@ -1,0 +1,10 @@
+import random
+import string
+from logic.model_ladder import ModelLadder
+
+# ... (rest of generator.py)
+
+def generate_memorable_password(theme: str, llm: ModelLadder) -> str:
+    # ...
+    response = llm.invoke(query)
+    # ...

@@ -1,0 +1,8 @@
+
+streamlit
+langchain-google-genai
+zxcvbn
+python-dotenv
+watchdog
+langchain-mistralai
+langchain-groq
