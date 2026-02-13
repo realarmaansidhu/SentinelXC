@@ -70,9 +70,8 @@ We are building the ultimate AI Security Suite. Coming soon:
 1.  **Clone**: `git clone https://github.com/realarmaansidhu/SentinelXC.git`
 2.  **Navigate**: `cd SentinelXC`
 3.  **Install**: `pip install -r requirements.txt`
-4.  **Run**: `streamlit run app.py`
 
-3.  **Configure Environment**:
+4.  **Configure Environment**:
     Create a `.env` file (copy from `.env.example`) and add your API keys:
     ```ini
     GOOGLE_API_KEY=your_gemini_key
@@ -80,9 +79,10 @@ We are building the ultimate AI Security Suite. Coming soon:
     MISTRAL_API_KEY=your_mistral_key
     ```
 
-4.  **Run the App**:
+5.  **Run the App**:
     ```bash
-    streamlit run app.py
+    a) treamlit run app.py
+    b) ./environ/bin/python -m streamlit run app.py (in case of conflicts)
     ```
 
 ---
