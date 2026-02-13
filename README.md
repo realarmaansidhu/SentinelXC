@@ -81,8 +81,8 @@ We are building the ultimate AI Security Suite. Coming soon:
 
 5.  **Run the App**:
     ```bash
-    a) treamlit run app.py
-    b) ./environ/bin/python -m streamlit run app.py (in case of conflicts)
+    a) streamlit run app.py
+    b) ./environ/bin/python -m streamlit run app.py (safe run)
     ```
 
 ---
